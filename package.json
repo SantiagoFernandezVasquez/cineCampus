@@ -1,0 +1,15 @@
+{
+  "name": "cine_campus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node --watch --env-file .env app.js"
+  },
+  "keywords": [],
+  "author": "Santiago Fernandez Vasquez",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.8.0"
+  }
+}
