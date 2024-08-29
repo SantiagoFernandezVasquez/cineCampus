@@ -1,68 +1,190 @@
 @import url(variables.css);
-*{
+* {
     margin: 0;
     padding: 0;
-    box-sizing: content-box;
+    box-sizing: border-box; /* Cambié de content-box a border-box para un mejor manejo del padding */
     font-family: "Inter_18pt-Regular";
     color: #000;
 }
 .father {
-    background-color: black;
+    background: linear-gradient(to top, #232323, #161616);
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 .upper {
     display: flex;
     flex-direction: row;
-    width: 300vw;
+    width: 100vw;
     height: 75px;
     padding-top: 15px;
 }
 .image {
-    background-color: blue;
-    width: 55px;
-    height: 55px;
+    background-image: url(../storage/img/handsome-confident-blond-bearded-businessman-with-hands-pockets-smiling-joyfully-give-professional-vibe-discussing-business-double-his-income-become-successful-white-background\ 1.svg);
+    width: 45px;
+    height: 45px;
     border-radius: 100%;
-    margin-left: 10px;
+    margin-left: 30px;
 }
 .text {
-    background-color: yellow;
     width: 240px;
     height: 55px;
-    margin-left: 10px;
+    margin-left: 20px;
 }
-.text p1 {
-    font-size: 15px;
+.text p {
+    font-size: 13px;
+    margin-bottom: 5px;
+    font-family: "Inter", sans-serif;
 }
 .text strong {
-    font-size: 17px;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
 }
 .bell {
-    background-color: black;
-    width: 55px;
-    height: 55px;
-    margin-left: 10px;
-    border-radius: 10px;
-    border: 2px solid gray
-}
-.search {
-    display: flex;
-    flex-direction: row;
-    width: 364px;
-    height: 55px;
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 45px;
+    height: 45px;
+    margin-left: -15px;
     border-radius: 10px;
     border: 2px solid gray;
-    padding-top: 5px;
-    padding-left: 7px;
 }
-.search_image {
-    background-color: red;
-    width: 50px;
+.bell_icon {
+    margin-top: 5px;
+    margin-left: 5px;
+}.search {
+    width: calc(100% - 40px);
     height: 50px;
+    margin-left: 20px;  
+    margin-right: 20px;
+    border-radius: 10px;
+    border: 2px solid gray;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
-.search_text {
-    margin-left: 10px;
-    margin-top: 15px;
+.search input {
+    background: linear-gradient(to right, #232323, #161616);
+    width: 100%;
+    height: 100%;
+    border: none; 
+    border-radius: 10px;
+    padding-left: 2.5rem;
+    padding-right: 1.5rem;
+    outline: none;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+}
+.title {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 40px;
+    margin-top: 10px;
+}
+.title_text {
+    padding-top: 7px;
+    margin-left: 25px;
+    font-family: "Inter", sans-serif;
+}
+.title_text2 {
+    padding-top: 7px;
+    margin-left: auto;
+    padding-right: 20px;
+}
+.title_text2 p {
+    color: red;
+    font-family: "Inter", sans-serif;
+}
+.scroll {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: auto; 
+}
+.peliculas {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    flex-shrink: 0;
+}
+.poster {
+    width: 180px;
+    height: 280px;
+    margin-left: 25px;
+    border-radius: 20px;
+}
+.poster1 {
+    background-image: url(../storage/img/poster.jpg);
+    width: 180px;
+    height: 280px;
+    margin-left: 25px;
+    border-radius: 20px;
+}
+.detalles {
+    width: 180px;
+    padding: 10px;
+    margin-left: 25px;
+}
+.detalles h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    margin-left: -10px;
+    font-family: "Inter", sans-serif;
+}
+.detalles p {
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+    font-family: "Inter", sans-serif;
+}
+.footer{
+    position: fixed;
+    bottom: 1px;
+    width: 100%;
+}
+.footer__ul{
+    background: linear-gradient(to right, #232323, #161616);
+    border: 1px solid #000;
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 15px;
+}
+.footer__ul li{
+    list-style: none;   
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.footer__ul li a{
+    display: flex;
+}
+.footer__ul li a img{
+    object-fit: contain;
+}
+.footer__ul li p {
+    font-size: 13px;
+    color: red;
+}
+.footer__ul li p1 {
+    font-size: 13px;
+    margin-top: 3px;
+}
+.footer__ul li p2 {
+    font-size: 13px;
+    margin-top: 12px;
+}
+.footer__ul li p3 {
+    font-size: 13px;
+    margin-top: 3px;   
 }

@@ -90,8 +90,6 @@
     margin-right: 10px;
 }
 .date {
-   display: flex;
-    flex-direction: row;
     width: auto;
     height: 30px;
     margin-left: 0px;
@@ -108,7 +106,7 @@
  .date p2 {
     color: black;
     font-size: 17px;    
-    margin-top: 7px;
+    margin-top: -38px;
     margin-left: auto;
     margin-right: 10px;
  }

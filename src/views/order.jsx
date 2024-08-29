@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import '../styles/order.css';
 import { useNavigate } from 'react-router-dom';
-import { startCountdown } from '../js/order'; 
+import { startCountdown } from '../js/order';  // Ajusta la ruta si es necesario
 
 const Order = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const countdownDuration = 60 * 5; 
+        // Inicia el contador de 5 minutos (300 segundos)
+        const countdownDuration = 60 * 5; // 5 minutos en segundos
         const display = document.getElementById('countdown');
         startCountdown(countdownDuration, display);
     }, []);

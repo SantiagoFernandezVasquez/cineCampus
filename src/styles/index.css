@@ -13,6 +13,7 @@
     padding-top: 15px;
 }
 .image {
+    background-color: red;
     width: 45px;
     height: 45px;
     border-radius: 100%;

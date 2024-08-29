@@ -5,9 +5,7 @@ const App = () => {
   return (
     <div className="father">
       <section className="upper">
-        <div className="image">
-          <img src="../src/storage/img/Image.svg" alt="" />
-        </div>
+        <div className="image"></div>
         <div className="text">
           <p>Hi, Santiago Fernandez!</p>
           <strong>Let's watch a movie together!</strong>
