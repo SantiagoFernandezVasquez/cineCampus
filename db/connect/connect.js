@@ -9,16 +9,18 @@ module.exports = class connect {
         return connect.instanceConnect;
     }
     async open() {
-        const uri = `${process.env.MONGO_PROTOCOLO}${process.env.MONGO_USER}:${process.env.MONGO_PSW}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB_NAME}`;
+        const uri = `${process.env.MONGO_PROTOCOL}${process.env.MONGO_USER}:${process.env.MONGO_PWS}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_NAME}`;
+        console.log("URI de conexión:", uri);
         try {
             this.conection = new MongoClient(uri);
             await this.conection.connect();
-            this.db = this.conection.db(process.env.MONGO_DB_NAME)
+            this.db = this.conection.db(process.env.MONGO_NAME);
+            if (!this.db) {
+                throw new Error("No se pudo conectar a la base de datos.");
+            }
         } catch (error) {
-            this.conection = { status: 400, message: "Error en la URI o en la conexion" }
+            console.error("Error en la URI o en la conexión:", error);
+            throw error;
         }
-    }
-    destructor(){
-        connect.instanceConnect = undefined;
     }
 }
