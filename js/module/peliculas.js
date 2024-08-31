@@ -17,4 +17,20 @@ module.exports = class pelicula extends connect {
             throw error;
         }
     }
+
+    async obtenerDetallesPelicula(id) {
+        try {
+            await this.open();
+            this.collectionPelicula = this.db.collection("pelicula");
+            const objectId = new ObjectId(id); 
+            const pelicula = await this.collectionPelicula.findOne({ _id: objectId });
+            if (!pelicula) {
+                throw new Error(`Película con ID ${id} no encontrada`);
+            }
+            return pelicula;
+        } catch (error) {
+            console.error("Error al obtener los detalles de la película:", error);
+            throw error;
+        }
+    }
 };
