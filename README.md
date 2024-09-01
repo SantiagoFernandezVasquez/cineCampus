@@ -24,17 +24,19 @@
   [
     {
       "_id": "66d0dc76eec85678b0fb0d6c",
-      "titulo": "Película Ejemplo 1",
+      "id": 1,
+      "titulo": "Avengers: Endgame",
       "genero": "Acción",
-      "duracion": "120 min",
-      "horarios": ["18:00", "20:00"]
+      "duracion": "181",
+      "sinopsis": "Los Vengadores se enfrentan a Thanos."
     },
     {
       "_id": "66d0dc76eec85678b0fb0d6d",
-      "titulo": "Película Ejemplo 2",
-      "genero": "Drama",
-      "duracion": "150 min",
-      "horarios": ["16:00", "19:00"]
+      "id": 2,
+      "titulo": "The Dark Knight",
+      "genero": "Acción",
+      "duracion": "152",
+      "sinopsis": "Batman enfrenta al Joker."
     }
   ]
   ```
@@ -57,21 +59,19 @@
   #### Ejemplo de Solicitud
 
   ```
-  GET /peliculas/66d0dc76eec85678b0fb0d6c
+  GET /peliculas/66d0dc76eec85678b0fb0d6e
   ```
 
   #### Ejemplo de Respuesta Exitosa
 
   ```
   {
-    "_id": "66d0dc76eec85678b0fb0d6c",
-    "titulo": "Película Ejemplo 1",
-    "genero": "Acción",
-    "duracion": "120 min",
-    "sinopsis": "Esta es la sinopsis de la película Ejemplo 1.",
-    "director": "Director Ejemplo",
-    "actores": ["Actor 1", "Actor 2"],
-    "horarios": ["18:00", "20:00"]
+    "_id": "66d0dc76eec85678b0fb0d6e",
+    "id": 3,
+    "titulo": "Interstellar",
+    "genero": "Ciencia Ficción",
+    "duracion": "169",
+    "sinopsis": "Exploración del espacio para salvar la humanidad."
   }
   ```
 
