@@ -11,7 +11,6 @@ module.exports = class Tarjetas extends connect {
             await this.open();
             const clientesCollection = this.db.collection("cliente");
 
-            // Convertir usuarioId a ObjectId
             const objectId = new ObjectId(usuarioId);
 
             const usuario = await clientesCollection.findOne({ _id: objectId });

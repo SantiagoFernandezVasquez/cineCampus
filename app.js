@@ -113,14 +113,28 @@ const clientes = new Clientes();
 
 // crearUsuario(id_tipo_de_categoria, nombre, apellido, nick, email, telefono);
 
-const obtenerDetallesUsuario = async (usuarioId) => {
+// const obtenerDetallesUsuario = async (usuarioId) => {
+//     try {
+//         const detalles = await clientes.obtenerDetallesUsuario(usuarioId);
+//         console.log("Detalles del usuario:", detalles);
+//     } catch (error) {
+//         console.error("Error al obtener los detalles del usuario:", error);
+//     }
+// };
+
+// const usuarioId = "66d0dc08eec85678b0fb0d65";
+// obtenerDetallesUsuario(usuarioId);
+
+const actualizarRolUsuario = async (usuarioId, nuevoRol) => {
     try {
-        const detalles = await clientes.obtenerDetallesUsuario(usuarioId);
-        console.log("Detalles del usuario:", detalles);
+        const resultado = await clientes.actualizarRolUsuario(usuarioId, nuevoRol);
+        console.log(resultado.mensaje);
     } catch (error) {
-        console.error("Error al obtener los detalles del usuario:", error);
+        console.error("Error al actualizar rol del usuario:", error);
     }
 };
 
-const usuarioId = "66d0dc08eec85678b0fb0d65";
-obtenerDetallesUsuario(usuarioId);
+const usuarioId = "66d0dc08eec85678b0fb0d63"; 
+const nuevoRol = 1; // 1 para Regular, 2 para Premium, 3 para VIP y 4 para Administrador
+
+actualizarRolUsuario(usuarioId, nuevoRol);

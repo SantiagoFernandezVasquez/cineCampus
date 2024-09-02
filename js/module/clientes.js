@@ -85,4 +85,25 @@ module.exports = class Clientes extends connect {
             throw error;
         }
     }
+
+    async actualizarRolUsuario(usuarioId, nuevoRol) {
+        try {
+            await this.open();
+            const clientesCollection = this.db.collection("cliente");
+
+            const resultado = await clientesCollection.updateOne(
+                { _id: new ObjectId(usuarioId) },
+                { $set: { id_tipo_de_categoria: nuevoRol } }
+            );
+
+            if (resultado.matchedCount === 0) {
+                throw new Error("Usuario no encontrado.");
+            }
+
+            return { mensaje: "Rol actualizado correctamente." };
+        } catch (error) {
+            console.error("Error al actualizar rol del usuario:", error);
+            throw error;
+        }
+    }
 };
