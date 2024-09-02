@@ -125,16 +125,31 @@ const clientes = new Clientes();
 // const usuarioId = "66d0dc08eec85678b0fb0d65";
 // obtenerDetallesUsuario(usuarioId);
 
-const actualizarRolUsuario = async (usuarioId, nuevoRol) => {
+// const actualizarRolUsuario = async (usuarioId, nuevoRol) => {
+//     try {
+//         const resultado = await clientes.actualizarRolUsuario(usuarioId, nuevoRol);
+//         console.log(resultado.mensaje);
+//     } catch (error) {
+//         console.error("Error al actualizar rol del usuario:", error);
+//     }
+// };
+
+// const usuarioId = "66d0dc08eec85678b0fb0d63"; 
+// const nuevoRol = 1; // 1 para Regular, 2 para Premium, 3 para VIP y 4 para Administrador
+
+// actualizarRolUsuario(usuarioId, nuevoRol);
+
+const listarUsuarios = async (rol) => {
     try {
-        const resultado = await clientes.actualizarRolUsuario(usuarioId, nuevoRol);
-        console.log(resultado.mensaje);
+        const resultado = await clientes.listarUsuarios(rol);
+        if (resultado.usuarios.length > 0) {
+            console.log("Usuarios encontrados:", resultado.usuarios);
+        } else {
+            console.log("No se encontraron usuarios.");
+        }
     } catch (error) {
-        console.error("Error al actualizar rol del usuario:", error);
+        console.error("Error al listar usuarios:", error);
     }
 };
 
-const usuarioId = "66d0dc08eec85678b0fb0d63"; 
-const nuevoRol = 1; // 1 para Regular, 2 para Premium, 3 para VIP y 4 para Administrador
-
-actualizarRolUsuario(usuarioId, nuevoRol);
+listarUsuarios(3);

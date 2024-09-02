@@ -428,3 +428,76 @@ Si el usuario no es encontrado, la respuesta será:
     "error": "Usuario no encontrado."
 }
 ```
+
+  ### 9. Listar los usuarios filtrando su rol
+
+### Endpoints
+
+#### **1. Listar Usuarios**
+
+- **Nombre de la función:** `listarUsuarios`
+- **Endpoint:** `/usuarios`
+- **Método:** `GET`
+
+### Descripción
+
+Permite la consulta de todos los usuarios del sistema. También es posible filtrar la lista por rol específico (VIP, estándar o administrador).
+
+### Parámetros de solicitud
+
+- Query Parameter (opcional):
+
+  - `rol`
+
+    : El ID del rol por el cual filtrar la lista de usuarios.
+
+    - `1` para usuarios Regulares.
+    - `2` para usuarios Premium.
+    - `3` para Usuarios VIP.
+    - `4` para Administradores
+    - Si no se especifica el parámetro, se devolverán todos los usuarios.
+
+### Ejemplo de uso
+
+#### Solicitud
+
+```
+GET /usuarios
+```
+
+#### Respuesta esperada
+
+- **Cuando se solicita sin filtro:**
+
+```
+{
+    "usuarios": [
+        {
+            "_id": "64c8a5f55d875b3a20f2c1d1",
+            "codigo": 12345,
+            "id_tipo_de_categoria": 3,
+            "nombre": "Juan",
+            "apellido": "Pérez",
+            "nick": "juanp",
+            "email": "juan.perez@example.com",
+            "telefono": {
+                "casa": "555-1234",
+                "movil": "555-5678"
+            }
+        },
+        {
+            "_id": "64c8a5f55d875b3a20f2c1d2",
+            "codigo": 12346,
+            "id_tipo_de_categoria": 2,
+            "nombre": "Ana",
+            "apellido": "Gómez",
+            "nick": "anag",
+            "email": "ana.gomez@example.com",
+            "telefono": {
+                "casa": "555-4321",
+                "movil": "555-8765"
+            }
+        }
+    ]
+}
+```

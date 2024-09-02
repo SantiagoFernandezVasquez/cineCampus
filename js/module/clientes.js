@@ -106,4 +106,20 @@ module.exports = class Clientes extends connect {
             throw error;
         }
     }
+
+    async listarUsuarios(rol) {
+        try {
+            await this.open();
+            const clientesCollection = this.db.collection("cliente");
+
+            const filtro = rol ? { id_tipo_de_categoria: rol } : {};
+
+            const usuarios = await clientesCollection.find(filtro).toArray();
+
+            return { usuarios };
+        } catch (error) {
+            console.error("Error al listar usuarios:", error);
+            throw error;
+        }
+    }
 };
