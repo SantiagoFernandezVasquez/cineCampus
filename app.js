@@ -88,27 +88,39 @@ const clientes = new Clientes();
 
 // aplicarDescuento(usuarioId, montoOriginal);
 
-const crearUsuario = async (id_tipo_de_categoria, nombre, apellido, nick, email, telefono) => {
+// const crearUsuario = async (id_tipo_de_categoria, nombre, apellido, nick, email, telefono) => {
+//     try {
+//         const resultado = await clientes.crearUsuario(null, id_tipo_de_categoria, nombre, apellido, nick, email, telefono);
+//         if (resultado.success) {
+//             console.log("Usuario creado con ID:", resultado.usuarioId);
+//         } else {
+//             console.log("No se pudo crear el usuario:", resultado.message);
+//         }
+//     } catch (error) {
+//         console.error("Error al crear el usuario:", error);
+//     }
+// };
+
+// const id_tipo_de_categoria = 2; // 1 = Regular, 2 = Premium, 3 = VIP, 4 = Administrador
+// const nombre = "Juan";
+// const apellido = "Pérez";
+// const nick = "juan_p";
+// const email = "juan.perez@example.com";
+// const telefono = {
+//     casa: "555-1234",
+//     movil: "555-5678"
+// };
+
+// crearUsuario(id_tipo_de_categoria, nombre, apellido, nick, email, telefono);
+
+const obtenerDetallesUsuario = async (usuarioId) => {
     try {
-        const resultado = await clientes.crearUsuario(null, id_tipo_de_categoria, nombre, apellido, nick, email, telefono);
-        if (resultado.success) {
-            console.log("Usuario creado con ID:", resultado.usuarioId);
-        } else {
-            console.log("No se pudo crear el usuario:", resultado.message);
-        }
+        const detalles = await clientes.obtenerDetallesUsuario(usuarioId);
+        console.log("Detalles del usuario:", detalles);
     } catch (error) {
-        console.error("Error al crear el usuario:", error);
+        console.error("Error al obtener los detalles del usuario:", error);
     }
 };
 
-const id_tipo_de_categoria = 2; // 1 = Regular, 2 = Premium, 3 = VIP, 4 = Administrador
-const nombre = "Juan";
-const apellido = "Pérez";
-const nick = "juan_p";
-const email = "juan.perez@example.com";
-const telefono = {
-    casa: "555-1234",
-    movil: "555-5678"
-};
-
-crearUsuario(id_tipo_de_categoria, nombre, apellido, nick, email, telefono);
+const usuarioId = "66d0dc08eec85678b0fb0d65";
+obtenerDetallesUsuario(usuarioId);

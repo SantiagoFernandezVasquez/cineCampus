@@ -42,4 +42,47 @@ module.exports = class Clientes extends connect {
             return ultimoUsuario[0].codigo + 1; 
         }
     }
+
+    async obtenerDetallesUsuario(usuarioId) {
+        try {
+            await this.open();
+            const clientesCollection = this.db.collection("cliente");
+
+            const usuario = await clientesCollection.findOne({ _id: new ObjectId(usuarioId) });
+
+            if (!usuario) {
+                throw new Error("Usuario no encontrado.");
+            }
+
+            let rol;
+            if (usuario.id_tipo_de_categoria === 1) {
+                rol = "Usuario Estándar";
+            } else if (usuario.id_tipo_de_categoria === 2) {
+                rol = "Usuario Premium";
+            } else if (usuario.id_tipo_de_categoria === 3) {
+                rol = "Usuario VIP";
+            } else if (usuario.id_tipo_de_categoria === 4) {
+                rol = "Administrador";
+            } else {
+                rol = "Desconocido";
+            }
+
+            const detallesUsuario = {
+                _id: usuario._id,
+                codigo: usuario.codigo,
+                nombre: usuario.nombre,
+                apellido: usuario.apellido,
+                nick: usuario.nick,
+                email: usuario.email,
+                telefono: usuario.telefono,
+                rol: rol,
+                esVIP: usuario.id_tipo_de_categoria === 3
+            };
+
+            return detallesUsuario;
+        } catch (error) {
+            console.error("Error al obtener detalles del usuario:", error);
+            throw error;
+        }
+    }
 };
