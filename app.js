@@ -1,10 +1,12 @@
 // const Peliculas = require("./js/module/peliculas");
 // const Boletos = require("./js/module/boletas");
-const Tarjetas = require("./js/module/tarjetas");
+// const Tarjetas = require("./js/module/tarjetas");
+const Clientes = require("./js/module/clientes");
 
 // const peliculas = new Peliculas();
 // const boletos = new Boletos();
-const tarjetas = new Tarjetas();
+// const tarjetas = new Tarjetas();
+const clientes = new Clientes();
 
 // function mostrarPeliculas() {
 //     peliculas.mostrarPeliculasCartelera()
@@ -72,16 +74,41 @@ const tarjetas = new Tarjetas();
 
 // verificarDisponibilidad(peliculaId, fecha, hora);
 
-const aplicarDescuento = async (usuarioId, montoOriginal) => {
+// const aplicarDescuento = async (usuarioId, montoOriginal) => {
+//     try {
+//         const montoConDescuento = await tarjetas.aplicarDescuento(usuarioId, montoOriginal);
+//         console.log("Monto con descuento aplicado:", montoConDescuento);
+//     } catch (error) {
+//         console.error("Error al aplicar el descuento:", error);
+//     }
+// };
+
+// const usuarioId = "66d0dc08eec85678b0fb0d64";
+// const montoOriginal = 100;
+
+// aplicarDescuento(usuarioId, montoOriginal);
+
+const crearUsuario = async (id_tipo_de_categoria, nombre, apellido, nick, email, telefono) => {
     try {
-        const montoConDescuento = await tarjetas.aplicarDescuento(usuarioId, montoOriginal);
-        console.log("Monto con descuento aplicado:", montoConDescuento);
+        const resultado = await clientes.crearUsuario(null, id_tipo_de_categoria, nombre, apellido, nick, email, telefono);
+        if (resultado.success) {
+            console.log("Usuario creado con ID:", resultado.usuarioId);
+        } else {
+            console.log("No se pudo crear el usuario:", resultado.message);
+        }
     } catch (error) {
-        console.error("Error al aplicar el descuento:", error);
+        console.error("Error al crear el usuario:", error);
     }
 };
 
-const usuarioId = "66d0dc08eec85678b0fb0d64";
-const montoOriginal = 100;
+const id_tipo_de_categoria = 2; // 1 = Regular, 2 = Premium, 3 = VIP, 4 = Administrador
+const nombre = "Juan";
+const apellido = "Pérez";
+const nick = "juan_p";
+const email = "juan.perez@example.com";
+const telefono = {
+    casa: "555-1234",
+    movil: "555-5678"
+};
 
-aplicarDescuento(usuarioId, montoOriginal);
+crearUsuario(id_tipo_de_categoria, nombre, apellido, nick, email, telefono);
