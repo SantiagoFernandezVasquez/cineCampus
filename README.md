@@ -258,3 +258,61 @@ Content-Type: application/json
     "error": "Usuario no encontrado."
   }
   ```
+
+## API de Clientes
+
+### Endpoints
+
+#### Agregar usuarios 
+
+- **Endpoint**: `/crearUsuario`
+- **Método**: `POST`
+
+##### Descripción
+
+Permite la creación de un nuevo usuario en el sistema, asignando un rol específico (Usuario Regular, Premium, VIP, o Administrador).
+
+##### Parámetros de Solicitud
+
+- `id_tipo_de_categoria` (Número entero, requerido): Tipo de categoría del usuario. Valores posibles:
+  - `1` = Usuario Estándar
+  - `2` = Usuario VIP
+  - `3` = Administrador
+- `nombre` (Cadena, requerido): Nombre del usuario.
+- `apellido` (Cadena, requerido): Apellido del usuario.
+- `nick` (Cadena, requerido): Nickname por el cual se distingue al usuario.
+- `email` (Cadena, requerido): Correo electrónico del usuario.
+- `telefono` (Objeto, requerido): Números de teléfono del usuario.
+  - `casa` (Cadena, opcional): Teléfono de casa.
+  - `movil` (Cadena, opcional): Teléfono móvil.
+
+### Ejemplo de Uso
+
+#### **Solicitud:**
+
+```
+const id_tipo_de_categoria = 2; // Usuario VIP
+const nombre = "Juan";
+const apellido = "Pérez";
+const nick = "juan_p";
+const email = "juan.perez@example.com";
+const telefono = {
+    casa: "555-1234",
+    movil: "555-5678"
+};
+
+crearUsuario(id_tipo_de_categoria, nombre, apellido, nick, email, telefono);
+```
+
+#### **Respuesta Exitosa:**
+
+- **Código:** `200 OK`
+- **Cuerpo:**
+
+```
+{
+  "success": true,
+  "usuarioId": "60a77ae17c48d876d7f6e000",
+  "message": "Usuario creado exitosamente."
+}
+```
