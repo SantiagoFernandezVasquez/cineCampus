@@ -210,3 +210,51 @@ const verificarDisponibilidad = async (peliculaId, fecha, hora) => {
       "message": "Error al verificar la disponibilidad: [Mensaje de error]"
     }
     ```
+
+## API de Tarjetas
+
+### Endpoints
+
+#### Aplicar descuentos
+
+- **Endpoint**: `/aplicarDescuento`
+- **Método**: `POST`
+
+##### Descripción
+
+Este endpoint permite aplicar un descuento en la compra de boletos para usuarios que tienen una tarjeta VIP.
+
+##### Parámetros de Solicitud
+
+- **usuarioId** (Obligatorio, `ObjectId`): El ID del usuario que desea aplicar el descuento.
+- **montoOriginal** (Obligatorio, `Number`): El monto original del boleto antes de aplicar el descuento.
+
+##### Ejemplo de Solicitud
+
+```
+POST /aplicar-descuento
+Content-Type: application/json
+
+{
+  "usuarioId": "ObjectId del cliente",
+  "montoOriginal": 100
+}
+```
+
+**Ejemplo de respuesta:**
+
+- **Usuario VIP:**
+
+  ```
+  {
+    "montoConDescuento": 90
+  }
+  ```
+
+- **Usuario no encontrado:**
+
+  ```
+  {
+    "error": "Usuario no encontrado."
+  }
+  ```
