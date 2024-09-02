@@ -261,11 +261,11 @@ Content-Type: application/json
 
 ## API de Clientes
 
-### Endpoints
-
 #### Agregar usuarios 
 
-- **Endpoint**: `/crearUsuario`
+### Endpoints
+
+- ##### **Endpoint**: `/crearUsuario`
 - **Método**: `POST`
 
 ##### Descripción
@@ -314,5 +314,54 @@ crearUsuario(id_tipo_de_categoria, nombre, apellido, nick, email, telefono);
   "success": true,
   "usuarioId": "60a77ae17c48d876d7f6e000",
   "message": "Usuario creado exitosamente."
+}
+```
+
+### Detalles de usuario
+
+### **Endpoints**
+
+- **Nombre de la función:** `obtenerDetallesUsuario`
+- **Endpoint:** `/api/clientes/{id}`
+- **Método:** `GET`
+
+### **Descripción**
+
+Permite la consulta de información detallada sobre un usuario, incluyendo su rol y estado de tarjeta VIP. Este endpoint proporciona datos completos sobre un usuario específico a partir de su identificador único.
+
+### **Parámetros de solicitud**
+
+- URL Parameters:
+  - `id` (string): El identificador único del usuario (ObjectId) en la base de datos.
+
+### **Ejemplo de uso y respuesta esperada**
+
+#### **Solicitud**
+
+```
+GET /api/clientes/64f8d4e7c2a5b7aefa0e9b4d
+```
+
+#### **Respuesta esperada**
+
+**Código de estado:** 200 OK
+
+**Cuerpo de la respuesta:**
+
+```
+jsonCopiar código{
+  "_id": "64f8d4e7c2a5b7aefa0e9b4d",
+  "codigo": "12345",
+  "id_tipo_de_categoria": 3,
+  "nombre": "Juan",
+  "apellido": "Pérez",
+  "nick": "juanp",
+  "email": "juan.perez@example.com",
+  "telefono": {
+    "casa": "+123456789",
+    "movil": "+987654321"
+  },
+  "rol": "Usuario Estandar",
+  "esVIP": "True"
 }
 ```
