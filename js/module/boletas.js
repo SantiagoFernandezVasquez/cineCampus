@@ -23,4 +23,27 @@ module.exports = class Boletos extends connect {
             throw error;
         }
     }
+
+    async verificarDisponibilidad(peliculaId, fecha, hora, cantidad) {
+        try {
+            await this.open();
+            const asientosCollection = this.db.collection("asientos");
+
+            const asientosDisponibles = await asientosCollection.find({
+                peliculaId,
+                fecha,
+                hora,
+                disponible: true
+            }).toArray();
+
+            if (asientosDisponibles.length >= cantidad) {
+                return { disponible: true };
+            } else {
+                return { disponible: false, message: "No hay suficientes asientos disponibles." };
+            }
+        } catch (error) {
+            console.error("Error al verificar la disponibilidad:", error);
+            throw error;
+        }
+    }
 };

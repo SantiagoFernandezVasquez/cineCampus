@@ -31,22 +31,41 @@ const boletos = new Boletos();
 // obtenerDetallesPelicula(idPelicula);
 
 
-const comprarBoleto = async (peliculaId, fecha, hora, cantidad) => {
+// const comprarBoleto = async (peliculaId, fecha, hora, cantidad) => {
+//     try {
+//         const resultado = await boletos.comprarBoleto(peliculaId, fecha, hora, cantidad);
+//         if (resultado.disponible) {
+//             console.log("Boleto comprado con ID:", resultado.boletoId);
+//         } else {
+//             console.log("No se pudo comprar el boleto:", resultado.message);
+//         }
+//     } catch (error) {
+//         console.error("Error al comprar el boleto:", error);
+//     }
+// };
+
+// const peliculaId = "66d0dc76eec85678b0fb0d6c"; 
+// const fecha = "2024-09-10";
+// const hora = "18:00";
+// const cantidad = 2;
+
+// comprarBoleto(peliculaId, fecha, hora, cantidad);
+
+const verificarDisponibilidad = async (peliculaId, fecha, hora) => {
     try {
-        const resultado = await boletos.comprarBoleto(peliculaId, fecha, hora, cantidad);
+        const resultado = await boletos.verificarDisponibilidad(peliculaId, fecha, hora);
         if (resultado.disponible) {
-            console.log("Boleto comprado con ID:", resultado.boletoId);
+            console.log(`Asientos disponibles: ${resultado.asientosDisponibles}`);
         } else {
-            console.log("No se pudo comprar el boleto:", resultado.message);
+            console.log("No hay asientos disponibles.");
         }
     } catch (error) {
-        console.error("Error al comprar el boleto:", error);
+        console.error("Error al verificar la disponibilidad de asientos:", error);
     }
 };
 
-const peliculaId = "66d0dc76eec85678b0fb0d6c"; 
+const peliculaId = "66d0dca8eec85678b0fb0d76"; 
 const fecha = "2024-09-10";
 const hora = "18:00";
-const cantidad = 2;
 
-comprarBoleto(peliculaId, fecha, hora, cantidad);
+verificarDisponibilidad(peliculaId, fecha, hora);
