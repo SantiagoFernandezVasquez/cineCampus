@@ -1,6 +1,6 @@
 const connect = require("../../db/connect/connect");
 
-class Boletos extends connect {
+module.exports = class Boletos extends connect {
     constructor() {
         super();
     }
@@ -17,12 +17,10 @@ class Boletos extends connect {
                 cantidad
             });
 
-            return resultado.insertedId;
+            return { disponible: true, boletoId: resultado.insertedId };
         } catch (error) {
             console.error("Error al comprar el boleto:", error);
             throw error;
         }
     }
-}
-
-module.exports = Boletos;
+};

@@ -1,7 +1,7 @@
-const Peliculas = require("./js/module/peliculas");
+// const Peliculas = require("./js/module/peliculas");
 const Boletos = require("./js/module/boletas");
 
-const peliculas = new Peliculas();
+// const peliculas = new Peliculas();
 const boletos = new Boletos();
 
 // function mostrarPeliculas() {
@@ -30,18 +30,23 @@ const boletos = new Boletos();
 // const idPelicula = '66d0dc76eec85678b0fb0d6c';
 // obtenerDetallesPelicula(idPelicula);
 
+
 const comprarBoleto = async (peliculaId, fecha, hora, cantidad) => {
     try {
-        const id = await boletos.comprarBoleto(peliculaId, fecha, hora, cantidad);
-        console.log("Boleto comprado con ID:", id);
+        const resultado = await boletos.comprarBoleto(peliculaId, fecha, hora, cantidad);
+        if (resultado.disponible) {
+            console.log("Boleto comprado con ID:", resultado.boletoId);
+        } else {
+            console.log("No se pudo comprar el boleto:", resultado.message);
+        }
     } catch (error) {
         console.error("Error al comprar el boleto:", error);
     }
 };
 
-const peliculaId = "66d0dc76eec85678b0fb0d6c";
-const fecha = "2024-09-10"; 
+const peliculaId = "66d0dc76eec85678b0fb0d6c"; 
+const fecha = "2024-09-10";
 const hora = "18:00";
-const cantidad = 2; 
+const cantidad = 2;
 
 comprarBoleto(peliculaId, fecha, hora, cantidad);
