@@ -83,7 +83,7 @@
 
 ### Endpoints
 
-#### Comprar Boleto
+  ### 3. Comprar Boleto
 
 - **Endpoint**: `/comprarBoleto`
 - **Método**: `POST`
@@ -151,7 +151,7 @@ comprarBoleto(peliculaId, fecha, hora, cantidad);
     }
     ```
 
-#### Verificar Disponibilidad de Asientos
+  ### 4. Verificar la Disponibilidad de Asientos
 
 - **Endpoint**: `/verificarDisponibilidad`
 - **Método**: `POST`
@@ -215,7 +215,7 @@ const verificarDisponibilidad = async (peliculaId, fecha, hora) => {
 
 ### Endpoints
 
-#### Aplicar descuentos
+  ### 5. Aplicar Descuentos
 
 - **Endpoint**: `/aplicarDescuento`
 - **Método**: `POST`
@@ -261,7 +261,7 @@ Content-Type: application/json
 
 ## API de Clientes
 
-#### Agregar usuarios 
+  ### 6. Agregar Usuarios
 
 ### Endpoints
 
@@ -317,7 +317,7 @@ crearUsuario(id_tipo_de_categoria, nombre, apellido, nick, email, telefono);
 }
 ```
 
-### Detalles de usuario
+  ### 7. Detalles de Usuario
 
 ### **Endpoints**
 
@@ -363,5 +363,68 @@ jsonCopiar código{
   },
   "rol": "Usuario Estandar",
   "esVIP": "True"
+}
+```
+
+  ### 8. Actualizar el rol de un Usuario
+
+  ### Endpoints
+
+- **Nombre de la función:** `actualizarRolUsuario`
+- **Endpoint:** `/actualizar-rol-usuario`
+- **Método:** `PUT`
+
+#### **Descripción**
+
+Esta API permite actualizar el rol de un usuario en el sistema. Puedes cambiar el rol de un usuario, por ejemplo, de usuario estándar a VIP, o viceversa. El rol del usuario se actualiza en función del valor del nuevo rol proporcionado.
+
+#### **Parámetros de Solicitud**
+
+- **usuarioId** (string, requerido): ID del usuario cuya categoría se desea actualizar. Debe ser un `ObjectId` de MongoDB.
+
+- nuevoRol
+
+   (integer, requerido): Nuevo rol del usuario. Los valores válidos son:
+
+  - `1` para Regular
+  - `2` para Usuario Premium
+  - `3` para Usuario VIP
+  - `4` para Administrador
+
+#### **Ejemplo de Uso**
+
+**Solicitud:**
+
+```
+PUT /actualizar-rol-usuario
+Content-Type: application/json
+
+{
+    "usuarioId": "64f8d4e7c2a5b7aefa0e9b4d",
+    "nuevoRol": 3
+}
+```
+
+**Respuesta Esperada:**
+
+- **Código de Estado:** `200 OK`
+- **Cuerpo de Respuesta:**
+
+```
+{
+    "mensaje": "Rol actualizado correctamente."
+}
+```
+
+#### **Ejemplo de Respuesta de Error**
+
+Si el usuario no es encontrado, la respuesta será:
+
+- **Código de Estado:** `404 Not Found`
+- **Cuerpo de Respuesta:**
+
+```
+{
+    "error": "Usuario no encontrado."
 }
 ```
