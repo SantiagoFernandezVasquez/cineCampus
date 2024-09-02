@@ -2,8 +2,6 @@
 
   ## API de Películas 
 
-  Esta API permite interactuar con un sistema de gestión de películas y boletos. A continuación, se detallan los endpoints disponibles, los parámetros que aceptan y las respuestas esperadas.
-
   ## Endpoints
 
   ### 1. Listar todas las películas
@@ -153,4 +151,62 @@ comprarBoleto(peliculaId, fecha, hora, cantidad);
     }
     ```
 
-### 
+#### Verificar Disponibilidad de Asientos
+
+- **Endpoint**: `/verificarDisponibilidad`
+- **Método**: `POST`
+
+##### Descripción
+
+Este endpoint permite consultar la disponibilidad de asientos en una sala para una proyección específica.
+
+##### Parámetros de Solicitud
+
+- **`peliculaId`** (string, requerido): El ID de la película para la cual se desea verificar la disponibilidad de asientos.
+- **`fecha`** (string, requerido): La fecha para la cual se desea verificar la disponibilidad, en formato `YYYY-MM-DD`.
+- **`hora`** (string, requerido): La hora para la cual se desea verificar la disponibilidad, en formato `HH:MM`.
+
+##### Ejemplo de Solicitud
+
+```
+const verificarDisponibilidad = async (peliculaId, fecha, hora) => {
+    try {
+        const resultado = await boletos.verificarDisponibilidad(peliculaId, fecha, hora);
+        if (resultado.disponible) {
+            console.log(`Asientos disponibles: ${resultado.asientosDisponibles}`);
+        } else {
+            console.log("No hay asientos disponibles.");
+        }
+    } catch (error) {
+        console.error("Error al verificar la disponibilidad de asientos:", error);
+    }
+};
+```
+
+##### Respuestas Esperadas
+
+- **Éxito**:
+
+  - Código de estado: `200 OK`
+
+  - Cuerpo de la respuesta:
+
+    ```
+    {
+      "disponible": true,
+      "asientosDisponibles": <Número de asientos disponibles>
+    }
+    ```
+
+- **Error**:
+
+  - Código de estado: `500 Internal Server Error`
+
+  - Cuerpo de la respuesta:
+
+    ```
+    {
+      "disponible": false,
+      "message": "Error al verificar la disponibilidad: [Mensaje de error]"
+    }
+    ```
