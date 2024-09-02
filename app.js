@@ -1,8 +1,10 @@
 // const Peliculas = require("./js/module/peliculas");
-const Boletos = require("./js/module/boletas");
+// const Boletos = require("./js/module/boletas");
+const Tarjetas = require("./js/module/tarjetas");
 
 // const peliculas = new Peliculas();
-const boletos = new Boletos();
+// const boletos = new Boletos();
+const tarjetas = new Tarjetas();
 
 // function mostrarPeliculas() {
 //     peliculas.mostrarPeliculasCartelera()
@@ -51,21 +53,35 @@ const boletos = new Boletos();
 
 // comprarBoleto(peliculaId, fecha, hora, cantidad);
 
-const verificarDisponibilidad = async (peliculaId, fecha, hora) => {
+// const verificarDisponibilidad = async (peliculaId, fecha, hora) => {
+//     try {
+//         const resultado = await boletos.verificarDisponibilidad(peliculaId, fecha, hora);
+//         if (resultado.disponible) {
+//             console.log(`Asientos disponibles: ${resultado.asientosDisponibles}`);
+//         } else {
+//             console.log("No hay asientos disponibles.");
+//         }
+//     } catch (error) {
+//         console.error("Error al verificar la disponibilidad de asientos:", error);
+//     }
+// };
+
+// const peliculaId = "66d0dca8eec85678b0fb0d76"; 
+// const fecha = "2024-09-10";
+// const hora = "18:00";
+
+// verificarDisponibilidad(peliculaId, fecha, hora);
+
+const aplicarDescuento = async (usuarioId, montoOriginal) => {
     try {
-        const resultado = await boletos.verificarDisponibilidad(peliculaId, fecha, hora);
-        if (resultado.disponible) {
-            console.log(`Asientos disponibles: ${resultado.asientosDisponibles}`);
-        } else {
-            console.log("No hay asientos disponibles.");
-        }
+        const montoConDescuento = await tarjetas.aplicarDescuento(usuarioId, montoOriginal);
+        console.log("Monto con descuento aplicado:", montoConDescuento);
     } catch (error) {
-        console.error("Error al verificar la disponibilidad de asientos:", error);
+        console.error("Error al aplicar el descuento:", error);
     }
 };
 
-const peliculaId = "66d0dca8eec85678b0fb0d76"; 
-const fecha = "2024-09-10";
-const hora = "18:00";
+const usuarioId = "66d0dc08eec85678b0fb0d64";
+const montoOriginal = 100;
 
-verificarDisponibilidad(peliculaId, fecha, hora);
+aplicarDescuento(usuarioId, montoOriginal);

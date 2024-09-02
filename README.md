@@ -1,4 +1,4 @@
-1. # Documentación de la API
+# Documentación de la API
 
   ## API de Películas 
 
