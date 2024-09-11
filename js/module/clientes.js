@@ -122,4 +122,24 @@ module.exports = class Clientes extends connect {
             throw error;
         }
     }
+
+    async crearAdmin(user, password, rol) {
+        try {
+            await this.open();
+
+            await this.db.command({
+                createUser: user,
+                pwd: password,
+                roles: [
+                    { role: rol, db: "cineCampus" }
+                ]
+            });
+            console.log(`Usuario ${user} creado con el rol ${rol}`);
+            return { success: true, message: `Usuario ${user} creado exitosamente.` };
+        } catch (error) {
+            console.error("Error al crear el usuario:", error);
+            throw error;
+        }
+    }
 };
+

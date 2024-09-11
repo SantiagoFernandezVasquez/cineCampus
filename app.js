@@ -1,24 +1,25 @@
-// const Peliculas = require("./js/module/peliculas");
+const Peliculas = require("./js/module/peliculas");
 // const Boletos = require("./js/module/boletas");
 // const Tarjetas = require("./js/module/tarjetas");
-const Clientes = require("./js/module/clientes");
+// const Clientes = require("./js/module/clientes");
 
-// const peliculas = new Peliculas();
+const peliculas = new Peliculas();
 // const boletos = new Boletos();
 // const tarjetas = new Tarjetas();
-const clientes = new Clientes();
+// const clientes = new Clientes();
+// const clienteObj = new Clientes();
 
-// function mostrarPeliculas() {
-//     peliculas.mostrarPeliculasCartelera()
-//         .then(peliculas => {
-//             console.log("Películas en cartelera:", peliculas);
-//         })
-//         .catch(error => {
-//             console.error("Error al obtener las películas:", error);
-//         });
-// }
+function mostrarPeliculas() {
+    peliculas.mostrarPeliculasCartelera()
+        .then(peliculas => {
+            console.log("Películas en cartelera:", peliculas);
+        })
+        .catch(error => {
+            console.error("Error al obtener las películas:", error);
+        });
+}
 
-// mostrarPeliculas();
+mostrarPeliculas();
 
 // async function obtenerDetallesPelicula(id) {
 //     try {
@@ -139,17 +140,30 @@ const clientes = new Clientes();
 
 // actualizarRolUsuario(usuarioId, nuevoRol);
 
-const listarUsuarios = async (rol) => {
-    try {
-        const resultado = await clientes.listarUsuarios(rol);
-        if (resultado.usuarios.length > 0) {
-            console.log("Usuarios encontrados:", resultado.usuarios);
-        } else {
-            console.log("No se encontraron usuarios.");
-        }
-    } catch (error) {
-        console.error("Error al listar usuarios:", error);
-    }
-};
+// const listarUsuarios = async (rol) => {
+//     try {
+//         const resultado = await clientes.listarUsuarios(rol);
+//         if (resultado.usuarios.length > 0) {
+//             console.log("Usuarios encontrados:", resultado.usuarios);
+//         } else {
+//             console.log("No se encontraron usuarios.");
+//         }
+//     } catch (error) {
+//         console.error("Error al listar usuarios:", error);
+//     }
+// };
 
-listarUsuarios(3);
+// listarUsuarios(3);
+
+// const usuario = "Santiago";
+// const password = "123456789";
+// const rol = "dbOwner";
+
+// clienteObj.open().then(async () => {
+//     try {
+//         const resultado = await clienteObj.crearAdmin(usuario, password, rol);
+//         console.log(resultado.message);
+//     } catch (error) {
+//         console.error("Error al crear el usuario administrador:", error);
+//     }
+// });
