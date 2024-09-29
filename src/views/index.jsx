@@ -27,7 +27,6 @@ const App = () => {
           <p>See all</p>
         </div>
       </section>
-
       <section className="scroll">
         <ul>
           <li>
@@ -44,7 +43,7 @@ const App = () => {
             </a>
           </li>
           <li>
-            <a href="../src/views/details.html">
+            <a href="./details">
               <div className="movie-card">
                 <div className="poster">
                   <img src="../src/storage/img/Rectangle 4170.svg" width="180px" alt="Puss in Boots Poster" />
@@ -57,7 +56,7 @@ const App = () => {
             </a>
           </li>
           <li>
-            <a href="../src/views/details.html">
+            <a href="./details">
               <div className="movie-card">
                 <div className="poster">
                   <img src="../src/storage/img/Rectangle 4170.svg" width="180px" alt="Puss in Boots Poster" />
@@ -85,7 +84,6 @@ const App = () => {
         <div className="movie-card2"></div>
         <div className="movie-card2"></div>
       </section>
-
       <footer className="footer">
         <ul className="footer__ul">
           <li>
@@ -95,19 +93,19 @@ const App = () => {
             <p>Home</p>
           </li>
           <li>
-            <a href="index.html">
+            <a href="./index">
               <img src="../src/storage/img/Vector.svg" width="20px" alt="Browse Icon" />
             </a>
             <p>Browse</p>
           </li>
           <li>
-            <a href="index.html">
+            <a href="./ticket">
               <img src="../src/storage/img/Icon.svg" alt="Tickets Icon" />
             </a>
             <p>Tickets</p>
           </li>
           <li>
-            <a href="index.html">
+            <a href="">
               <img src="../src/storage/img/Iconly (2).svg" alt="Profile Icon" />
             </a>
             <p>Profile</p>

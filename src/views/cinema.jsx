@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/cinema.css'; // Asegúrate de que este archivo esté en la misma carpeta o proporciona la ruta correcta.
+import '../styles/cinema.css';
 import { useNavigate } from 'react-router-dom';
 
 const Cinema = () => {
@@ -114,13 +114,13 @@ const Cinema = () => {
                     <p>Price</p>
                     <p className='price_number'>$24,99</p>
                 </div>
-                <a href="">
+                <a href="./order">
                 <div className='buy_ticket'>
                     <p>Buy Ticket</p>
                 </div>
                 </a>
             </section>
-        </div>
+        </div>  
     );
 };
 
